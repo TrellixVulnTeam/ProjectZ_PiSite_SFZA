@@ -1,5 +1,6 @@
 
 from . import models
+from . import connect
 
 
 def get_wifi_choices():

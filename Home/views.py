@@ -1,16 +1,16 @@
 from django.shortcuts import render
 from . import utility
 from . import models
-
+from django.http import HttpResponse
+from . import connect
 
 def index(request):
     return render(request, 'Home/index.html')
 
 
 def test(request):
-    if request.method == 'POST':
-        print("lol")
-    return render(request, 'Home/test.html')
+    # x = connect.Search()
+    return HttpResponse("lol")
 
 
 def login(request):
