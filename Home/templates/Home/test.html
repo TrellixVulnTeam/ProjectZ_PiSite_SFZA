@@ -1,0 +1,27 @@
+{% extends 'Shared/layout.html' %}
+
+{% block content %}
+    <h2>Login</h2>
+
+<div class="row">
+<form method="POST" class="col s12">
+    {% csrf_token %}
+  <div class="row">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">account_circle</i>
+      <input id="icon_prefix" type="text" class="validate">
+      <label for="icon_prefix">First Name</label>
+    </div>
+    <div class="input-field col s12">
+      <i class="material-icons prefix">vpn_key</i>
+      <input id="icon_telephone" type="password" class="validate">
+      <label for="icon_telephone">Password</label>
+    </div>
+      <div class="input-field col s12">
+          <input type="submit" value="submit" class="btn">
+      </div>
+
+  </div>
+</form>
+</div>
+{% endblock %}

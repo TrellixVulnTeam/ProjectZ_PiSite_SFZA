@@ -1,0 +1,22 @@
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+.select-wrapper{
+    width:300px;
+    display: inline-block;
+}
+
+label{
+    font-size: initial;
+}
+input{
+    max-width:300px;
+}
+
+select{
+    max-width:300px;
+}
