@@ -1,6 +1,5 @@
 
 from . import models
-from . import connect
 
 
 def get_wifi_choices():
@@ -13,8 +12,12 @@ def get_wifi_choices():
 
 def check_login():
     model = models.AssignedTo.objects.get()
-    if model is not None:
-        print('hui')
+    print(model)
+    if model is None:
+        return 'None'
+
+    return model.actualName
+
 
 
 

@@ -4,8 +4,13 @@ from . import models
 from django.http import HttpResponse
 from . import connect
 
+
 def index(request):
-    return render(request, 'Home/index.html')
+    actual_name = utility.check_login()
+    context = {
+        "login": actual_name
+    }
+    return render(request, 'Home/index.html', context)
 
 
 def test(request):
@@ -34,24 +39,28 @@ def message(request):
 
 
 def wifi(request):
+    actual_name = utility.check_login()
     if request.method == 'POST':
         wifi_name = request.POST["wifi_name"]
         password = request.POST["password"]
-        print(wifi_name)
+        pos = wifi_name.find(":")
+        actual_wifi_name = wifi_name[:pos]
 
         context = {
-             'msg': wifi_name
+            "msg": actual_wifi_name,
+            "login": actual_name
         }
         return render(request, 'Home/message.html', context)
 
-        # answer = connect.connect(wifi_name, password)
+        # answer = connect.connect(actual_wifi_name, password)
         # context = {
         #     'msg': answer
         # }
         # return render(request, 'Home/message.html', context)
 
     context = {
-        'choices': utility.get_wifi_choices()
+        'choices': utility.get_wifi_choices(),
+        'login': actual_name,
         #'choices': connect.get_wifi_networks(),
     }
     print(context['choices'])
