@@ -6,9 +6,10 @@ def get_wifi_networks():
 
     cells = wifi.Cell.all('wlan0')
     for cell in cells:
-        wifi_list.append({cell.ssid: cell.encrypted})
+        wifi_list[cell.ssid] = cell.encrypted
 
-    return wifi_list
+    print(wifi_list.items())
+    return wifi_list.items()
 
 
 def Search():
@@ -70,8 +71,10 @@ def connect(ssid, password=None):
             try:
                 scheme.activate()
             except wifi.exceptions.ConnectionError:
+                Delete(ssid)
                 return False
-            return cell
+
+            return "Connected to: "+ssid
 
     return False
 

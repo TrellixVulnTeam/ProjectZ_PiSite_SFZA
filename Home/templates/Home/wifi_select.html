@@ -9,22 +9,22 @@
         <select name="wifi_name" class="icons">
             <option value="" disabled selected>Choose wifi</option>
             {% for k,v in choices %}
-                {% if v == "yes" %}
-                    <option value="{{ k }}" data-icon="{% static 'Shared/images/key.PNG' %}" class="left circle">{{ k }}</option>
+                {% if v == True %}
+                    <option value="{{ k }}:{{ v }}" data-icon="{% static 'Shared/images/key.PNG' %}" class="left circle">{{ k }}</option>
                 {% else %}
-                    <option value="{{ k }}" data-icon="blank" class="left circle">{{ k }}</option>
+                    <option value="{{ k }}:{{ v }}" data-icon="blank" class="left circle">{{ k }}</option>
                 {% endif %}
             {% endfor %}
         </select>
         <label>Wifi:</label>
     </div>
-    <div class="input-field col s12">
+    <div id="passDiv" class="input-field col s12" style="display: none;">
         <input id="password" name="password" type="password" class="validate" required>
         <label for="password">Password:</label>
     </div>
 
     <div class="input-field col s12">
-        <input type="submit" value="submit" class="btn">
+        <input type="submit" value="Connect" class="btn">
     </div>
 </form>
 {% endblock %}

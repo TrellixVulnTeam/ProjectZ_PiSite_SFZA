@@ -5,8 +5,8 @@ from . import connect
 
 def get_wifi_choices():
     wifilist = {
-        'wifi1': "no",
-        'wifi2': "yes"
+        'wifi1': False,
+        'wifi2': True
     }
     return wifilist.items()
 
