@@ -1,42 +1,81 @@
 {% extends 'Shared/layout.html' %}
 
 {% block content %}
+    <div class="section">
+        <!--   Icon Section   -->
+        <div class="row">
+            <div class="col s12 m8">
+                <div class="icon-block">
+                    <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+                    <h5 class="center">Settings</h5>
+                    <div class="row">
 
-<div class="section">
-  <!--   Icon Section   -->
-    <div class="row">
-        <div class="col s12 m8">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Settings</h5>
-            <ul>
-                <li>
-                    <a href="/wifi/">Connect to wifi</a>
-                </li>
-                <li>
-                    <a href="/login/">Add to my account</a>
-                </li>
-            </ul>
-          </div>
-        </div>
+                        <div class="col s12 m4 center-align">
+                            <a href="/login/">
+                                <div class="card-panel teal hoverable">
+                                <span class="white-text">
+                                    <h3>
+                                        <i class="material-icons">account_circle</i>
+                                    </h3>
+                                    <h5>Manage Account</h5>
 
-        <div class="col s12 m4">
-            <div class="icon-block">
-                <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-                <div style="border-style:ridge;">
-                    <h5 class="center">Sensor status</h5>
-                    <hr>
-                    <table class="bordered">
-                    <tr>
-                        <th>Sensor Name</th>
-                        <th>Status</th>
-                    </tr>
-                    </table>
+                                </span>
+
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col s12 m4 center-align">
+                            <a href="/wifi/">
+                                <div class="card-panel teal hoverable">
+                            <span class="white-text">
+                                <h3>
+                                    <i class="material-icons">wifi</i>
+                                </h3>
+                                <h5>Configure wifi</h5>
+
+                            </span>
+
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
                 </div>
-          </div>
-        </div>
+            </div>
 
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
+                    <div style="border-style:ridge;">
+                        <h5 class="center">Sensor status</h5>
+                        <hr>
+                        <table class="bordered highlight">
+                            <tr>
+                                <th>Sensor Name</th>
+                                <th>Status</th>
+                            </tr>
+                            {% for k,v in sensor_list %}
+                                <tr>
+                                    <td>
+                                        {{ k }}
+                                    </td>
+                                    <td>
+                                        {% if v == True %}
+                                            <a class="btn btn-floating pulse light-green"></a>
+                                        {% else %}
+                                            <a class="btn btn-floating red"></a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
-<br><br>
+    <br><br>
 {% endblock %}

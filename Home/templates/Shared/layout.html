@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Starter Template - Materialize</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>Starter Template - Materialize</title>
 
-  <!-- CSS  -->
-  {% load staticfiles %}
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="{% static 'Shared/css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="{% static 'Shared/css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <!-- CSS  -->
+    {% load staticfiles %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{% static 'Shared/css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="{% static 'Shared/css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
 
     <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="{% static 'Shared/js/materialize.js' %}"></script>
-  <script src="{% static 'Shared/js/init.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="{% static 'Shared/js/materialize.js' %}"></script>
+    <script src="{% static 'Shared/js/init.js' %}"></script>
 
 </head>
 <body>
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">iPlant</a>
-        {% if login != "None" %}
-          <ul class="right">
-            <li><a href="#"><i class="material-icons left">account_circle</i>{{ login }}</a></li>
-          </ul>
-        {% endif %}
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo left">iPlant</a>
+        <ul class="right">
+            <li><a href="#"><i class="material-icons left">wifi</i>{{ ppc }}</a></li>
+            {% if login != "None" %}
+                <li><a href="#"><i class="material-icons left">account_circle</i>{{ login }}</a></li>
+            {% endif %}
+        </ul>
     </div>
-  </nav>
-    <div class="container">
-        {%  block content %}
-        {% endblock %}
-    </div>
+</nav>
+<div class="container">
+    {%  block content %}
+    {% endblock %}
+</div>
 </body>
 </html>

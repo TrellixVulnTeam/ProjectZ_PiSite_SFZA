@@ -6,9 +6,8 @@ from . import connect
 
 
 def index(request):
-    actual_name = utility.check_login()
     context = {
-        "login": actual_name
+        "sensor_list": utility.get_sensors_status()
     }
     return render(request, 'Home/index.html', context)
 
@@ -19,7 +18,6 @@ def test(request):
 
 
 def login(request):
-    utility.check_login()
     if request.method == 'POST':
         username = request.POST["username"]
         password = request.POST["password"]
@@ -31,6 +29,7 @@ def login(request):
             model = models.AssignedTo.objects.create(username=username, actualName="vasya")
             model.save()
             return render(request, 'Home/message.html', context)
+
     return render(request, 'Home/login.html')
 
 
@@ -39,7 +38,6 @@ def message(request):
 
 
 def wifi(request):
-    actual_name = utility.check_login()
     if request.method == 'POST':
         wifi_name = request.POST["wifi_name"]
         password = request.POST["password"]
@@ -48,7 +46,6 @@ def wifi(request):
 
         context = {
             "msg": actual_wifi_name,
-            "login": actual_name
         }
         return render(request, 'Home/message.html', context)
 
@@ -60,7 +57,6 @@ def wifi(request):
 
     context = {
         'choices': utility.get_wifi_choices(),
-        'login': actual_name,
         #'choices': connect.get_wifi_networks(),
     }
     print(context['choices'])
