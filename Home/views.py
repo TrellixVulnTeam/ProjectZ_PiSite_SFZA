@@ -41,23 +41,18 @@ def wifi(request):
     if request.method == 'POST':
         wifi_name = request.POST["wifi_name"]
         password = request.POST["password"]
+
         pos = wifi_name.find(":")
         actual_wifi_name = wifi_name[:pos]
 
+        answer = utility.connect_to_wifi(actual_wifi_name, password)
         context = {
-            "msg": actual_wifi_name,
+            'msg': answer
         }
         return render(request, 'Home/message.html', context)
 
-        # answer = connect.connect(actual_wifi_name, password)
-        # context = {
-        #     'msg': answer
-        # }
-        # return render(request, 'Home/message.html', context)
-
     context = {
         'choices': utility.get_wifi_choices(),
-        #'choices': connect.get_wifi_networks(),
     }
     print(context['choices'])
     return render(request, 'Home/wifi_select.html', context)

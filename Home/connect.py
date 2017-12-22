@@ -39,6 +39,7 @@ def Delete(ssid):
         return True
     return False
 
+
 def FindFromSearchList(ssid):
     wifilist = Search()
 
@@ -47,6 +48,7 @@ def FindFromSearchList(ssid):
             return cell
 
     return False
+
 
 def connect(ssid, password=None):
     Delete(ssid)
@@ -77,6 +79,7 @@ def connect(ssid, password=None):
             return "Connected to: "+ssid
 
     return False
+
 
 def Add(cell,password=None):
     if not cell:
