@@ -18,13 +18,42 @@ def get_wifi_choices():
     return wifi_list.items()
 
 
-def get_users_name():
+def change_assignment():
     model = models.AssignedTo.objects.get()
-    print(model)
-    if model is None:
-        return 'None'
+    if model.linked:
+        msg = 'You successfully unlinked the device from your account'
+        model.linked = False
+    else:
+        msg = 'You successfully linked the device to your account'
+        model.linked = True
+    model.save()
 
-    return model.actualName
+    return msg
+
+
+def get_user():
+    model = models.AssignedTo.objects.filter()
+
+    if model.count() > 0:
+        return models.AssignedTo.objects.get()
+
+    return None
+
+
+def get_users_name():
+    model = models.AssignedTo.objects.filter()
+
+    if model.count() > 0:
+        model = models.AssignedTo.objects.get()
+        return model.actualName
+
+    return 'None'
+
+
+def disconnect_user():
+    model = models.AssignedTo.objects.get()
+    model.delete()
+    return True
 
 
 def get_sensors_status():

@@ -1,8 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . import utility
 from . import models
 from django.http import HttpResponse
-from . import connect
 
 
 def index(request):
@@ -12,29 +11,31 @@ def index(request):
     return render(request, 'Home/index.html', context)
 
 
-def test(request):
-    # x = connect.Search()
-    return HttpResponse("lol")
-
-
 def login(request):
+    if utility.get_users_name() != 'None':
+        return redirect('/profile')
+
     if request.method == 'POST':
         username = request.POST["username"]
         password = request.POST["password"]
 
         if utility.check_user(username, password):
-            context = {
-                'msg': 'You successfully linked to your account'
-            }
             model = models.AssignedTo.objects.create(username=username, actualName="vasya")
             model.save()
-            return render(request, 'Home/message.html', context)
+            return redirect('/profile')
 
     return render(request, 'Home/login.html')
 
 
 def message(request):
     return render(request, 'Home/message.html')
+
+
+def change_assignment(request):
+    context = {
+        'msg': utility.change_assignment()
+    }
+    return render(request, 'Home/message.html', context)
 
 
 def wifi(request):
@@ -56,3 +57,17 @@ def wifi(request):
     }
     print(context['choices'])
     return render(request, 'Home/wifi_select.html', context)
+
+
+def profile(request):
+    if utility.get_users_name() == 'None':
+        return redirect('/login')
+
+    return render(request, 'Home/profile.html')
+
+
+def logout(request):
+    if utility.get_users_name() != 'None':
+        utility.disconnect_user()
+
+    return redirect('/')

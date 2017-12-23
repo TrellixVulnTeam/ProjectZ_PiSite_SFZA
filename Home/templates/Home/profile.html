@@ -1,12 +1,94 @@
 {% extends 'Shared/layout.html' %}
 
 {% block content %}
-    <div class="container">
-        <h3>Message</h3>
+    <div class="section">
+        <h4>Profile</h4>
         <hr>
-        <p>
-            <strong>{{ msg }}</strong>
-        </p>
+        <!--   Icon Section   -->
+        <div class="row">
+            <div class="col s12 m8">
+                <div class="icon-block">
+                    <div class="row">
+
+                        <div class="col s12 m4 center-align">
+                            <a href="/profile/">
+                                <div class="card-panel teal hoverable">
+                                <span class="white-text">
+                                    <h3>
+                                        <i class="material-icons">account_circle</i>
+                                    </h3>
+                                    <h5>Assign to my acc</h5>
+
+                                </span>
+
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col s12 m4 center-align">
+                            <a href="/logout/">
+                                <div class="card-panel teal hoverable">
+                            <span class="white-text">
+                                <h3>
+                                    <i class="material-icons">reply</i>
+                                </h3>
+                                <h5>Log out</h5>
+
+                            </span>
+
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col s12 m4 center-align">
+                            <a href="/logout/">
+                                <div class="card-panel teal hoverable">
+                            <span class="white-text">
+                                <h3>
+                                    <i class="material-icons">spa</i>
+                                </h3>
+                                <h5>Change plant</h5>
+
+                            </span>
+
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <div style="border-style:ridge;">
+                        <h5 class="center">Plant Profile</h5>
+                        <hr>
+                        <table class="bordered highlight">
+                            <tr>
+                                <th>Name</th>
+                                <th>Action</th>
+                            </tr>
+                            {% for k,v in sensor_list %}
+                                <tr>
+                                    <td>
+                                        {{ k }}
+                                    </td>
+                                    <td>
+                                        {% if v == True %}
+                                            <a class="btn btn-floating pulse light-green"></a>
+                                        {% else %}
+                                            <a class="btn btn-floating red"></a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
 {% endblock %}
