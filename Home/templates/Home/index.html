@@ -54,13 +54,13 @@
                                 <th>Sensor Name</th>
                                 <th>Status</th>
                             </tr>
-                            {% for k,v in sensor_list %}
+                            {% for sensor in sensor_list %}
                                 <tr>
                                     <td>
-                                        {{ k }}
+                                        <i class="material-icons left">{{ sensor.icon }}</i>{{ sensor.sensor_name }}
                                     </td>
                                     <td>
-                                        {% if v == True %}
+                                        {% if sensor.status == True %}
                                             <a class="btn btn-floating pulse light-green"></a>
                                         {% else %}
                                             <a class="btn btn-floating red"></a>

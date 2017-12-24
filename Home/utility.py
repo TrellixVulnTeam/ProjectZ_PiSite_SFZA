@@ -40,6 +40,35 @@ def get_user():
     return None
 
 
+def get_user_context():
+    user = get_user()
+
+    if user is not None:
+        model = models.AssignedTo.objects.get()
+        context = {
+            "users_name": model.actualName,
+            'log_msg': 'Log out',
+            'log_icon': 'power_settings_new',
+            'log_link': '/logout/'
+        }
+        if model.linked:
+            context['msg'] = 'Unlink from acc'
+            context['icon'] = 'leak_remove'
+        else:
+            context['msg'] = 'Link to my acc'
+            context['icon'] = 'leak_add'
+
+        return context
+    else:
+        context = {
+            "users_name": None,
+            'log_msg': 'Log in',
+            'log_icon': 'account_circle',
+            'log_link': '/login/'
+        }
+    return context
+
+
 def get_users_name():
     model = models.AssignedTo.objects.filter()
 
@@ -57,15 +86,15 @@ def disconnect_user():
 
 
 def get_sensors_status():
-    sensor_list = {
-        'Soil Moisture': False,
-        'Heat': True,
-        'Rain': True,
-        'Pump': False,
-        'Light': True,
-        'Water Amount': False
-    }
-    return sensor_list.items()
+    sensor_list = [{'sensor_name': 'Soil Moisture', 'status': False, 'icon': 'opacity'},
+           {'sensor_name': 'Heat', 'status': True, 'icon': 'whatshot'},
+           {'sensor_name': 'Rain', 'status': True, 'icon': 'beach_access'},
+           {'sensor_name': 'Pump', 'status': False, 'icon': 'power'},
+           {'sensor_name': 'Light', 'status': True, 'icon': 'wb_sunny'},
+           {'sensor_name': 'Water Amount', 'status': False, 'icon': 'format_color_fill'},
+           ]
+
+    return sensor_list
 
 
 def check_user(username, password):

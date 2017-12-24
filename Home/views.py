@@ -60,10 +60,8 @@ def wifi(request):
 
 
 def profile(request):
-    if utility.get_users_name() == 'None':
-        return redirect('/login')
-
-    return render(request, 'Home/profile.html')
+    context = utility.get_user_context()
+    return render(request, 'Home/profile.html', context)
 
 
 def logout(request):

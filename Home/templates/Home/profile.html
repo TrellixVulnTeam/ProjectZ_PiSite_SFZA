@@ -9,29 +9,29 @@
             <div class="col s12 m8">
                 <div class="icon-block">
                     <div class="row">
+                        {% if users_name != None %}
+                            <div class="col s12 m4 center-align">
+                                <a href="/assign/">
+                                    <div class="card-panel teal hoverable">
+                                    <span class="white-text">
+                                        <h3>
+                                            <i class="material-icons">{{ icon }}</i>
+                                        </h3>
+                                        <h5>{{ msg }}</h5>
+                                    </span>
 
+                                    </div>
+                                </a>
+                            </div>
+                        {%  endif %}
                         <div class="col s12 m4 center-align">
-                            <a href="/profile/">
-                                <div class="card-panel teal hoverable">
-                                <span class="white-text">
-                                    <h3>
-                                        <i class="material-icons">account_circle</i>
-                                    </h3>
-                                    <h5>Assign to my acc</h5>
-
-                                </span>
-
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col s12 m4 center-align">
-                            <a href="/logout/">
+                            <a href="{{ log_link }}">
                                 <div class="card-panel teal hoverable">
                             <span class="white-text">
                                 <h3>
-                                    <i class="material-icons">reply</i>
+                                    <i class="material-icons">{{ log_icon }}</i>
                                 </h3>
-                                <h5>Log out</h5>
+                                <h5>{{ log_msg }}</h5>
 
                             </span>
 
@@ -39,7 +39,7 @@
                             </a>
                         </div>
                         <div class="col s12 m4 center-align">
-                            <a href="/logout/">
+                            <a href="#">
                                 <div class="card-panel teal hoverable">
                             <span class="white-text">
                                 <h3>
