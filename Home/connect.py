@@ -2,14 +2,14 @@ import wifi
 
 
 def get_wifi_networks():
-    wifi_list = {}
+    wifi_list = []
 
     cells = wifi.Cell.all('wlan0')
     for cell in cells:
-        wifi_list[cell.ssid] = cell.encrypted
+        wifi_list.append({'name': cell.ssid, 'encrypted': cell.encrypted})
 
-    print(wifi_list.items())
-    return wifi_list.items()
+    print(wifi_list)
+    return wifi_list
 
 
 def Search():

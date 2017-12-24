@@ -52,8 +52,10 @@ def wifi(request):
         }
         return render(request, 'Home/message.html', context)
 
+    wifi_list = utility.get_wifi_choices()
     context = {
-        'choices': utility.get_wifi_choices(),
+        'choices': wifi_list,
+        'choices_len': len(wifi_list)
     }
     print(context['choices'])
     return render(request, 'Home/wifi_select.html', context)

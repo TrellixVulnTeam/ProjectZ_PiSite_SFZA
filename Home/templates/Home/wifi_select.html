@@ -3,28 +3,30 @@
 
 {% block content %}
     <h2>Choose Wifi</h2>
-<form method="POST">
-    {% csrf_token %}
-    <div class="input-field col s12 m6">
-        <select name="wifi_name" class="icons">
-            <option value="" disabled selected>Choose wifi</option>
-            {% for k,v in choices %}
-                {% if v == True %}
-                    <option value="{{ k }}:{{ v }}" data-icon="{% static 'Shared/images/key.PNG' %}" class="left circle">{{ k }}</option>
-                {% else %}
-                    <option value="{{ k }}:{{ v }}" data-icon="blank" class="left circle">{{ k }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-        <label>Wifi:</label>
-    </div>
-    <div id="passDiv" class="input-field col s12" style="display: none;">
-        <input id="password" name="password" type="password" class="validate" required>
-        <label for="password">Password:</label>
-    </div>
+    {% if choices_len > 0 %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-field col s12 m6">
+                <select name="wifi_name" class="icons">
+                    <option value="" disabled selected>Choose wifi</option>
+                    {% for choice in choices %}
+                        {% if choice.encrypted == True %}
+                            <option value="{{ choice.name }}" data-icon="{% static 'Shared/images/key.PNG' %}" class="left circle">{{ choice.name }}</option>
+                        {% else %}
+                            <option value="{{ choice.name }}" data-icon="blank" class="left circle">{{ choice.name }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                <label>Wifi:</label>
+            </div>
+            <div id="passDiv" class="input-field col s12" style="display: none;">
+                <input id="password" name="password" type="password" class="validate" required>
+                <label for="password">Password:</label>
+            </div>
 
-    <div class="input-field col s12">
-        <input type="submit" value="Connect" class="btn">
-    </div>
-</form>
+            <div class="input-field col s12">
+                <input type="submit" value="Connect" class="btn">
+            </div>
+        </form>
+    {% endif %}
 {% endblock %}

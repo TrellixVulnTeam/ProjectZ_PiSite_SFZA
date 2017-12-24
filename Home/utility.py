@@ -7,15 +7,12 @@ from subprocess import check_output
 def get_wifi_choices():
     try:
         wifi_list = connect.get_wifi_networks()
-        return wifi_list.items()
+        return wifi_list
     except Exception as inst:
         print(inst)
 
-    wifi_list = {
-        'wifi1': False,
-        'wifi2': True
-    }
-    return wifi_list.items()
+    wifi_list = []
+    return wifi_list
 
 
 def change_assignment():
@@ -103,12 +100,12 @@ def check_user(username, password):
 
 def get_wifi_name():
     try:
-        wifi_name = check_output(['iwgetid', '-r'])
-        return wifi_name
+        wifi_name = check_output(['iwgetid', '-r']).decode("utf-8")
+        return wifi_name[:len(wifi_name)-2]
     except Exception as inst:
         print(inst)
 
-    return "Not connected"
+    return "Not Connected"
 
 
 def connect_to_wifi(ssid, password):

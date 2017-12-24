@@ -20,3 +20,9 @@ input{
 select{
     max-width:300px;
 }
+
+.myFont{
+    font-size: 1.4rem;
+    line-height: 110%;
+    margin: 1.6rem 0 0.4rem 0;
+}
