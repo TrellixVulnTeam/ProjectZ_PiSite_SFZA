@@ -21,7 +21,16 @@
 <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo left"><i class="material-icons left">local_florist</i>iPlant</a>
         <ul class="right">
-            <li><a href="#"><i class="material-icons left">wifi</i>{{ ppc }}</a></li>
+            <!-- Dropdown Trigger -->
+            <li><a class='dropdown-button' data-hover="true" data-belowOrigin="true" href='/wifi/' data-activates='wifiDrop'><i class="material-icons left">wifi</i>{{ wifi_name }}</a></li>
+            <!-- Dropdown Structure -->
+            <ul id='wifiDrop' class='dropdown-content'>
+                <li><a href="/wifi/">Manage</a></li>
+                {% if wifi_name != "Not Connected" %}
+                <li class="divider"></li>
+                <li><a href="/wifidc/"><i class="material-icons">power_settings_new</i>Disconnect</a></li>
+                {% endif %}
+            </ul>
             {% if login != "None" %}
                 <li><a href="/profile"><i class="material-icons left">account_circle</i>{{ login }}</a></li>
             {% endif %}

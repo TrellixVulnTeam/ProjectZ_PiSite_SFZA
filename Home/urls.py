@@ -10,4 +10,5 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('logout/', views.logout, name='logout'),
     path('assign/', views.change_assignment, name='change_assignment'),
+    path('wifidc/', views.wifidc, name='wifidc'),
 ]

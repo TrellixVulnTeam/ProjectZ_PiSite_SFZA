@@ -2,6 +2,8 @@
 from . import connect
 from . import models
 from subprocess import check_output
+import os
+import time
 
 
 def get_wifi_choices():
@@ -118,4 +120,10 @@ def connect_to_wifi(ssid, password):
         print(inst)
 
     return "No wifi dongle"
+
+
+def disconnect_from_wifi():
+    os.system('sudo ifdown wlan0')
+    time.sleep(2)
+    os.system('sudo ifup wlan0')
 

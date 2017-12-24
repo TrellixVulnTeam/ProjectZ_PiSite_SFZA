@@ -71,3 +71,12 @@ def logout(request):
         utility.disconnect_user()
 
     return redirect('/')
+
+
+def wifidc(request):
+    utility.disconnect_from_wifi()
+    context = {
+        'msg': "You have been disconnected from local wifi"
+    }
+    return render(request, 'Home/message.html', context)
+
