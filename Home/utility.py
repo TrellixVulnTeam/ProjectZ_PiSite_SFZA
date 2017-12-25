@@ -103,7 +103,7 @@ def check_user(username, password):
 def get_wifi_name():
     try:
         wifi_name = check_output(['iwgetid', '-r']).decode("utf-8")
-        return wifi_name[:len(wifi_name)-2]
+        return wifi_name[:len(wifi_name)-1]
     except Exception as inst:
         print(inst)
 

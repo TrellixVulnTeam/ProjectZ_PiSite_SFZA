@@ -11,9 +11,9 @@
                     <option value="" disabled selected>Choose wifi</option>
                     {% for choice in choices %}
                         {% if choice.encrypted == True %}
-                            <option value="{{ choice.name }}" data-icon="{% static 'Shared/images/key.PNG' %}" class="left circle">{{ choice.name }}</option>
+                            <option value="{{ choice.name }}:{{ choice.encrypted }}" data-icon="{% static 'Shared/images/key.PNG' %}" class="left circle">{{ choice.name }}</option>
                         {% else %}
-                            <option value="{{ choice.name }}" data-icon="blank" class="left circle">{{ choice.name }}</option>
+                            <option value="{{ choice.name }}:{{ choice.encrypted }}" data-icon="blank" class="left circle">{{ choice.name }}</option>
                         {% endif %}
                     {% endfor %}
                 </select>
