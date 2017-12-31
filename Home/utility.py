@@ -38,6 +38,13 @@ def get_user():
 
     return None
 
+def get_last_sensor_update():
+    model = models.SensorsLogs.objects.all()
+
+    if model.count() > 0:
+        return model.last()
+
+    return None
 
 def get_user_context():
     user = get_user()
@@ -127,3 +134,12 @@ def disconnect_from_wifi():
     time.sleep(2)
     os.system('sudo ifup wlan0')
 
+
+def get_mac(interface='eth0'):
+    # Return the MAC address of the specified interface
+    try:
+        mac_address = open('/sys/class/net/%s/address' % interface).read()
+    except Exception as ex:
+        print(ex)
+        mac_address = "00:00:00:00:00:00"
+    return mac_address[0:17]

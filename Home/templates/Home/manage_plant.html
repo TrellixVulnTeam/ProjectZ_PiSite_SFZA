@@ -1,0 +1,119 @@
+{% extends 'Shared/layout.html' %}
+
+{% block content %}
+    <div class="section">
+        <h4>Profile</h4>
+        <hr>
+        <!--   Icon Section   -->
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <div class="row">
+                        <div class="col s12 center-align">
+                            <a href="/get_sensors_status/">
+                                <div class="card-panel teal hoverable">
+                            <span class="white-text">
+                                <h3>
+                                    <i class="material-icons">spa</i>
+                                </h3>
+                                <h5>Get status</h5>
+
+                            </span>
+
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <div style="border-style:ridge;">
+                        <h5 class="center">Current status -</h5><h9 class="center">{{ arr_sensors.sync_time }}</h9>
+                        <hr>
+                        <table class="bordered highlight">
+                            <tr>
+                                <th>Name</th>
+                                <th>Status</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Heat
+                                </td>
+                                <td>
+                                    {{ arr_sensors.heat }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Light
+                                </td>
+                                <td>
+                                    {{ arr_sensors.light }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Moist
+                                </td>
+                                <td>
+                                    {{ arr_sensors.moist }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Rain
+                                </td>
+                                <td>
+                                    {{ arr_sensors.rain }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Water lavel
+                                </td>
+                                <td>
+                                    {{ arr_sensors.water_lvl }}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <div style="border-style:ridge;">
+                        <h5 class="center">Plant Profile</h5>
+                        <hr>
+                        <table class="bordered highlight">
+                            <tr>
+                                <th>Name</th>
+                                <th>Action</th>
+                            </tr>
+                            {% for k,v in sensor_list %}
+                                <tr>
+                                    <td>
+                                        {{ k }}
+                                    </td>
+                                    <td>
+                                        {% if v == True %}
+                                            <a class="btn btn-floating pulse light-green"></a>
+                                        {% else %}
+                                            <a class="btn btn-floating red"></a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
