@@ -3,29 +3,29 @@
 {% block content %}
     <h2>Choose plant profile</h2>
 
-<div class="row">
-    <form method="POST" class="col s12">
-        {% csrf_token %}
-        <div class="row">
-            <div class="input-field col s12">
-                <input id="plant_name" name="plant_name" type="text" class="validate" required>
-                <label for="plant_name">Plant name</label>
-            </div>
+    <div class="row">
+        <form method="POST" class="col s12">
+            {% csrf_token %}
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="plant_name" name="plant_name" type="text" class="validate" required>
+                    <label for="plant_name">Plant name</label>
+                </div>
 
-            <div class="input-field col s12">
-                <input id="avg_heat" name="avg_heat" type="number" class="validate" required>
-                <label for="password">Average heat</label>
+                <div class="input-field col s12">
+                    <input id="avg_heat" name="avg_heat" type="number" class="validate" required>
+                    <label for="password">Average heat</label>
+                </div>
+                <p class="col s12">
+                    <input class="with-gap" name="location" type="radio" id="outdoor" value="outdoor" />
+                    <label for="outdoor">Outdoor</label>
+                    <input class="with-gap" name="location" type="radio" id="indoor" value="indoor" />
+                    <label for="indoor">Indoor</label>
+                </p>
+                <div class="input-field col s12">
+                    <input type="submit" value="submit" class="btn waves-effect waves-light">
+                </div>
             </div>
-            <p>
-              <input class="with-gap" name="location" type="radio" id="outdoor" value="outdoor" />
-              <lab el for="outdoor">Outdoor</label>
-                <input class="with-gap" name="location" type="radio" id="indoor" value="indoor" />
-              <label for="indoor">Indoor</label>
-            </p>
-            <div class="input-field col s12">
-                <input type="submit" value="submit" class="btn waves-effect waves-light">
-            </div>
-        </div>
-    </form>
-</div>
+        </form>
+    </div>
 {% endblock %}
