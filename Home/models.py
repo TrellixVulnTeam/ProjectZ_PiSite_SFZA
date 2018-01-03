@@ -25,3 +25,14 @@ class SensorsLogs(models.Model):
     water_lvl = models.CharField(max_length=250)
     sync_time = models.DateTimeField(auto_now_add=True, primary_key=True)
 
+
+class PlantProfile(models.Model):
+    plant_name = models.CharField(max_length=250, default="unknown")
+    location = models.CharField(max_length=250, default="outdoor")
+    last_change = models.DateTimeField(auto_now=True)
+    avg_heat = models.IntegerField()
+    moist = models.CharField(max_length=250)
+    avg_light = models.CharField(max_length=250)
+    time_to_water = models.CharField(max_length=250)
+    priority = models.CharField(max_length=250)
+

@@ -8,6 +8,7 @@ urlpatterns = [
     path('wifi/', views.wifi, name='wifi'),
     path('message/', views.message, name='message'),
     path('profile/', views.profile, name='profile'),
+    path('choose_profile/', views.choose_profile, name='choose_profile'),
     path('logout/', views.logout, name='logout'),
     path('assign/', views.change_assignment, name='change_assignment'),
     path('disconnect_wifi/', views.disconnect_wifi, name='disconnect_wifi'),

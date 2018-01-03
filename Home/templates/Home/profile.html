@@ -57,37 +57,6 @@
                 </div>
             </div>
 
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <div style="border-style:ridge;">
-                        <h5 class="center">Plant Profile</h5>
-                        <hr>
-                        <table class="bordered highlight">
-                            <tr>
-                                <th>Name</th>
-                                <th>Action</th>
-                            </tr>
-                            {% for k,v in sensor_list %}
-                                <tr>
-                                    <td>
-                                        {{ k }}
-                                    </td>
-                                    <td>
-                                        {% if v == True %}
-                                            <a class="btn btn-floating pulse light-green"></a>
-                                        {% else %}
-                                            <a class="btn btn-floating red"></a>
-                                        {% endif %}
-                                    </td>
-                                </tr>
-
-                            {% endfor %}
-
-                        </table>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 
