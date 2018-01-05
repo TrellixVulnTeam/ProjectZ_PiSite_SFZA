@@ -105,32 +105,35 @@
                     <div style="border-style:ridge;">
                         <h5 class="center">Plant Profile</h5>
                         <hr>
-                        <table class="bordered highlight">
-                            <tr>
-                                <th>Name</th>
-                                <th>Action</th>
-                            </tr>
-                            {% for k,v in sensor_list %}
+                        {% if plant_profile != None %}
+                            <table class="bordered highlight">
                                 <tr>
-                                    <td>
-                                        {{ k }}
-                                    </td>
-                                    <td>
-                                        {% if v == True %}
-                                            <a class="btn btn-floating pulse light-green"></a>
-                                        {% else %}
-                                            <a class="btn btn-floating red"></a>
-                                        {% endif %}
-                                    </td>
+                                    <th>Name</th>
+                                    <th>Action</th>
                                 </tr>
+                                {% for k,v in sensor_list %}
+                                    <tr>
+                                        <td>
+                                            {{ k }}
+                                        </td>
+                                        <td>
+                                            {% if v == True %}
+                                                <a class="btn btn-floating pulse light-green"></a>
+                                            {% else %}
+                                                <a class="btn btn-floating red"></a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
 
-                            {% endfor %}
+                                {% endfor %}
 
-                        </table>
+                            </table>
+                        {% else %}
+                            <p><strong>Profile not set yet</strong></p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 

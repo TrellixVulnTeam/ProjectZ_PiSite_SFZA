@@ -13,15 +13,27 @@
                 </div>
 
                 <div class="input-field col s12">
-                    <input id="avg_heat" name="avg_heat" type="number" class="validate" required>
-                    <label for="password">Average heat</label>
+                    <input id="avg_heat" name="avg_heat" type="number" class="validate" required min="1">
+                    <label for="password">Average heat (&#8451;)</label>
                 </div>
                 <p class="col s12">
+                    <label for="">Location:</label>
+                    <br>
                     <input class="with-gap" name="location" type="radio" id="outdoor" value="outdoor" />
                     <label for="outdoor">Outdoor</label>
                     <input class="with-gap" name="location" type="radio" id="indoor" value="indoor" />
                     <label for="indoor">Indoor</label>
                 </p>
+                <div class="input-field col s12">
+                    <select name="avg_light" id="avg_light" class="icons">
+                        <option value="" disabled selected>Choose</option>
+                        <option value="All Sun Types">All Sun Types</option>
+                        <option value="Full Sun">Full Sun</option>
+                        <option value="Partial Shade">Partial Shade</option>
+                        <option value="Full Shade">Full Shade</option>
+                    </select>
+                    <label for="avg_light">Sun Needs:</label>
+                </div>
                 <div class="input-field col s12">
                     <input type="submit" value="submit" class="btn waves-effect waves-light">
                 </div>

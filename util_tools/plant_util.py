@@ -4,11 +4,10 @@ from Home import models
 def get_profile():
     try:
         model = models.PlantProfile.objects.get()
-        return model
     except Exception as err:
         print(err)
-
-    return None
+        model = models.PlantProfile()
+    return model
 
 
 def change_profile(request):
@@ -17,7 +16,7 @@ def change_profile(request):
 
     except Exception as err:
         print(err)
-        model = models.PlantProfile.objects.create()
+        model = models.PlantProfile()
 
     model.plant_name = request.POST["plant_name"]
     model.avg_heat = request.POST["avg_heat"]

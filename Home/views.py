@@ -84,7 +84,13 @@ def disconnect_wifi(request):
 
 def manage_plant(request):
     arr = hardware_util.get_last_sensor_update()
+    plant_profile = plant_util.get_profile()
+
+    if plant_profile.plant_name == "":
+        plant_profile = None
+
     context = {
+        'profile': plant_profile,
         'arr_sensors': arr
     }
     return render(request, 'Home/manage_plant.html', context)
@@ -153,7 +159,10 @@ def receive_and_save_sensors(request):
 
 
 def choose_profile(request):
-    profile = plant_util.get_profile()
-    # if request.method == 'POST':
+    plant_profile = plant_util.get_profile()
 
-    return render(request, 'Home/choose_profile.html')
+    # if request.method == 'POST':
+    context = {
+        "plant_profile": plant_profile
+    }
+    return render(request, 'Home/choose_profile.html', context)
